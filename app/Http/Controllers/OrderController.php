@@ -87,6 +87,28 @@ class OrderController extends Controller
     public function show($id)
     {
         $order = Order::findOrFail($id);
+
+        switch ($order->service) {
+            case 'dev':
+                $order->detailed_service = 'Web Development';
+                break;
+            case 'seo':
+                $order->detailed_service = 'SEO';
+                break;
+            case 'sem':
+                $order->detailed_service = 'Search Engine Marketing';
+                break;
+            case 'smm':
+                $order->detailed_service = 'Social Media Marketing';
+                break;
+            case 'em':
+                $order->detailed_service = 'E-mail Marketing';
+                break;
+            default:
+                $order->detailed_service = 'Unknown Service';
+        }
+
+
         return view('orders.show', compact('order'));
     }
 

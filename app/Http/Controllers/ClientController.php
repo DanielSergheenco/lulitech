@@ -61,4 +61,17 @@ class ClientController extends Controller
             'clientOrders' => $clientOrders
         ]);
     }
+
+    public function affiliate()
+    {
+        $user = Auth::user();
+        $userId = $user->getAttribute('affiliate_id');
+        $referralLink = User::findOrFail($user->getAuthIdentifier())->getReferralLink();
+        $referredUsers = User::where('referred_by', $userId)->get();
+
+        return view('client.affiliate', [
+            'referralLink' => $referralLink,
+            'referredUsers' => $referredUsers
+        ]);
+    }
 }

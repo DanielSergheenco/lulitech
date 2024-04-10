@@ -36,7 +36,7 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
 Route::middleware(['auth', 'role:Client'])->group(function () {
     Route::get('/client/dashboard', [ClientController::class, 'dashboard'])->name('client.dashboard');
     Route::get('/orders/{id}', [OrderController::class, 'show'])->name('orders.show');
-
+    Route::get('/client/affiliate', [ClientController::class, 'affiliate'])->name('client.affiliate');
 });
 
 
