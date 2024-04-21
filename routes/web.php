@@ -20,13 +20,14 @@ use App\Http\Controllers\OrderController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 })->middleware('referral');
 
 Route::get('/order', [OrderController::class, 'create'])->name('order.create');
 Route::get('/order/website', [OrderController::class, 'createWebsiteOrderForm'])->name('order.website');
 Route::post('/order/store', [OrderController::class, 'store'])->name('order.store');
 Route::get('/order/success', [OrderController::class, 'success'])->name('order.success');
+Route::get('/order/fail', [OrderController::class, 'fail'])->name('order.fail');
 
 
 Route::middleware(['auth', 'role:Admin'])->group(function () {
@@ -37,6 +38,8 @@ Route::middleware(['auth', 'role:Client'])->group(function () {
     Route::get('/client/dashboard', [ClientController::class, 'dashboard'])->name('client.dashboard');
     Route::get('/orders/{id}', [OrderController::class, 'show'])->name('orders.show');
     Route::get('/client/affiliate', [ClientController::class, 'affiliate'])->name('client.affiliate');
+    Route::get('/client/invoice', [ClientController::class, 'invoice'])->name('invoices');
+
 });
 
 

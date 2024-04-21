@@ -6,7 +6,7 @@
 @endsection
 
 @section('breadcrumb')
-<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+<li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
 <li class="breadcrumb-item active" aria-current="page">Main</li>
 @endsection
 

@@ -74,4 +74,16 @@ class ClientController extends Controller
             'referredUsers' => $referredUsers
         ]);
     }
+
+    public function invoices()
+    {
+        // Logic specific for retrieving invoices
+        $user = Auth::user();
+        $invoices = $user->invoices();
+        return view('client.invoices', [
+            'invoices' => $invoices
+        ]);
+    }
+
+
 }
